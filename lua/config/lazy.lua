@@ -61,6 +61,6 @@ end
 
 -- Créer une autocommand pour formater les fichiers .c après leur sauvegarde
 vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = "*.c",
+  pattern = { "*.c", "*.h" },
   callback = format_c_file,
 })
