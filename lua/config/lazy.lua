@@ -64,3 +64,5 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "*.c", "*.h" },
   callback = format_c_file,
 })
+
+vim.keymap.set("n", "<leader>rn", ":IncRename ")
