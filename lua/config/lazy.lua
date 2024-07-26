@@ -54,15 +54,9 @@ local function format_c_file()
   -- Utiliser l'alias "form" pour formater le fichier en cours
   print("Formatting C file...")
   local cmd = "python3 -m c_formatter_42 " .. vim.fn.expand("%:p")
-  print(cmd)
-
-  -- Exécuter la commande silencieusement et capturer les erreurs
-  local result = vim.fn.system(cmd)
-  if vim.v.shell_error ~= 0 then
-    print("Error executing command: " .. result)
-  else
-    print("Formatting successful.")
-  end
+  print("Command:", cmd)
+  -- Exécuter la commande silencieusement
+  vim.cmd("silent ! " .. cmd)
 end
 
 -- Créer une autocommand pour formater les fichiers .c après leur sauvegarde
