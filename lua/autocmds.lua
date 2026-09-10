@@ -1,12 +1,3 @@
-vim.api.nvim_create_autocmd("BufWritePre", {
-	callback = function()
-		local ft = vim.bo.filetype
-		if ft == "rust" or ft == "lua" or ft == "wgsl" then
-			vim.lsp.buf.format({ async = false })
-		end
-	end,
-})
-
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
 	callback = function()
 		vim.cmd("checktime")
