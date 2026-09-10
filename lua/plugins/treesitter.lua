@@ -1,12 +1,21 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  branch = "main",   
-  build = ":TSUpdate",
-  lazy = false,
-  opts = {
-    ensure_installed = { "rust", "python", "bash", "toml", "regex", "c", "cpp" },
-    auto_install = true,
-    highlight = { enable = true },
-    indent = { enable = true },
-  },
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    build = ":TSUpdate",
+    lazy = false,
+    config = function()
+        require("nvim-treesitter").setup({
+            install_dir = vim.fn.stdpath("data") .. "/site",
+        })
+        require("nvim-treesitter").install({
+            "rust", "python", "bash", "toml", "regex", "c", "cpp",
+        })
+
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "rust", "python", "bash", "toml", "regex", "c", "cpp" },
+            callback = function()
+                vim.treesitter.start()
+            end,
+        })
+    end,
 }

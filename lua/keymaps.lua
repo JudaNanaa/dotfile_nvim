@@ -46,6 +46,9 @@ vim.keymap.set("n", "<leader>rr", function() cargo_float("cargo run", "cargo run
 vim.keymap.set("n", "<leader>rt", function() cargo_float("cargo test", "cargo test") end)
 vim.keymap.set("n", "<leader>rf", function() cargo_float("cargo fmt", "cargo fmt") end)
 
+-- Select all
+vim.keymap.set({ "n", "i", "v" }, "<C-a>", "<Esc>ggVG", { desc = "Select all" })
+
 -- Commentaires (C-/ ou C-_ selon le terminal)
 local function comment_line()
 	require("Comment.api").toggle.linewise.current()

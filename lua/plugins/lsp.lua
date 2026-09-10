@@ -52,10 +52,36 @@ return {
 					updateOnChange = false,
 				},
 			})
+			vim.lsp.config("clangd", {
+				filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }
+			})
 			vim.lsp.enable("rust_analyzer")
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("wgsl_analyzer")
 			vim.lsp.enable("bacon_ls")
+			vim.lsp.enable("clangd")
 		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			formatters_by_ft = {
+				c = { "clang-format" },
+				cpp = { "clang-format" },
+				rust = { "rustfmt" },
+			},
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_fallback = true,
+			},
+		},
+		keys = {
+			{
+				"<leader>lf",
+				function() require("conform").format({ async = true, lsp_fallback = true }) end,
+				mode = { "n", "v" },
+				desc = "Format buffer",
+			},
+		},
 	},
 }
