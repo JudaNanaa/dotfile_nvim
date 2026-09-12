@@ -22,7 +22,7 @@ return {
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = { "rust", "python", "bash", "toml", "regex", "c", "cpp" },
+			pattern = { "rust", "python", "bash", "toml", "regex", "c", "cpp", "markdown" },
 			callback = function()
 				vim.treesitter.start()
 			end,
