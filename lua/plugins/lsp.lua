@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "rust_analyzer", "lua_ls", "wgsl_analyzer", "clangd", "bacon_ls" },
+				ensure_installed = { "rust_analyzer", "lua_ls", "wgsl_analyzer", "clangd", "bacon_ls", "zls" },
 				automatic_installation = true,
 			})
 		end,
@@ -45,6 +45,7 @@ return {
 				},
 			})
 			vim.lsp.config("lua_ls", {})
+			vim.lsp.config("zls", {})
 			vim.lsp.config("bacon_ls", {
 				init_options = {
 					updateOnSave = true,
@@ -60,6 +61,7 @@ return {
 			vim.lsp.enable("wgsl_analyzer")
 			vim.lsp.enable("bacon_ls")
 			vim.lsp.enable("clangd")
+			vim.lsp.enable("zls")
 		end,
 	},
 	{

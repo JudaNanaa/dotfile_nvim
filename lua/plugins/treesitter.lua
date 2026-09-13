@@ -19,10 +19,13 @@ return {
 			"regex",
 			"c",
 			"cpp",
+			"json",
+			"lua",
+			"zig",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = { "rust", "python", "bash", "toml", "regex", "c", "cpp", "markdown" },
+			pattern = { "rust", "python", "bash", "toml", "regex", "c", "cpp", "markdown", "json", "lua", "zig" },
 			callback = function()
 				vim.treesitter.start()
 			end,
